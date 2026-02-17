@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>Lectura CSV Spark</title>
+    <description>Carga CSV con esquema definido en PySpark. [Variable Name: df; Path: Files/orders/*.csv]</description>
+    <parts>
+        <part>
+            <text>df = spark.read</text>
+            <desc>Objeto lector de Spark (DataFrameReader).</desc>
+        </part>
+        <part>
+            <text>.format("csv")</text>
+            <desc>Indica que el formato de archivo es CSV.</desc>
+        </part>
+        <part>
+            <text>.schema(orderSchema)</text>
+            <desc>Aplica una estructura predefinida (StructType) para evitar la inferencia costosa de tipos.</desc>
+        </part>
+        <part>
+            <text>.load("Files/orders/*.csv")</text>
+            <desc>Carga todos los archivos CSV que coincidan con el patrón.</desc>
+        </part>
+    </parts>
+    <full>df = spark.read.format("csv").schema(orderSchema).load("Files/orders/*.csv")</full>
+</command>

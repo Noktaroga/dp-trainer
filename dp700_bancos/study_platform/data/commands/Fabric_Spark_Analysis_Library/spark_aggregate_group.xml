@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>Agregación de DataFrame</title>
+    <description>Agrupa por producto y suma las cantidades pedidas. [Variable Name: productSales]</description>
+    <parts>
+        <part>
+            <text>productSales = df.select("Item", "Quantity")</text>
+            <desc>Selecciona solo las columnas relevantes para optimizar el procesamiento.</desc>
+        </part>
+        <part>
+            <text>.groupBy("Item")</text>
+            <desc>Agrupa los datos basándose en los valores únicos de la columna 'Item'.</desc>
+        </part>
+        <part>
+            <text>.sum()</text>
+            <desc>Aplica una agregación de suma a las columnas numéricas restantes (Quantity).</desc>
+        </part>
+    </parts>
+    <full>productSales = df.select("Item", "Quantity").groupBy("Item").sum()</full>
+</command>

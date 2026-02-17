@@ -1,0 +1,9 @@
+<command>
+    <title>Política de Seguridad (RLS)</title>
+    <description>Activa el filtrado de filas automático basado en una función de predicado.</description>
+    <parts>
+        <part><text>CREATE SECURITY POLICY</text><desc>Crea el objeto de política.</desc></part>
+        <part><text>WITH (STATE = ON)</text><desc>Activa la política inmediatamente.</desc></part>
+    </parts>
+    <full>CREATE SECURITY POLICY SalesFilter ADD FILTER PREDICATE Sales.fn_securitypredicate(SalesTerritory) ON dbo.FactSales WITH (STATE = ON);</full>
+</command>

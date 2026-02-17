@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>GRANT SELECT (Permisos)</title>
+    <description>Otorga permisos de lectura a un usuario. [Target Object: dbo.FactSales]</description>
+    <parts>
+        <part>
+            <text>GRANT SELECT</text>
+            <desc>Permiso específico para leer datos.</desc>
+        </part>
+        <part>
+            <text>ON dbo.FactSales</text>
+            <desc>Objeto sobre el que se aplica el permiso.</desc>
+        </part>
+        <part>
+            <text>TO [usuario@dominio.com]</text>
+            <desc>Destinatario del permiso (Principal de seguridad).</desc>
+        </part>
+    </parts>
+    <full>GRANT SELECT ON dbo.FactSales TO [usuario@dominio.com];</full>
+</command>

@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>Agregación de datos con KQL</title>
+    <description>Resume los datos aplicando funciones matemáticas como la suma. [KQL Base Table: Bikestream; Group By: Neighbourhood]</description>
+    <parts>
+        <part>
+            <text>summarize ["Total Number of Bikes"] = sum(No_Bikes)</text>
+            <desc>Calcula la suma de la columna 'No_Bikes' y nombra el resultado 'Total Number of Bikes'.</desc>
+        </part>
+        <part>
+            <text>by Neighbourhood</text>
+            <desc>Genera una fila de resumen por cada valor distinto en la columna 'Neighbourhood'.</desc>
+        </part>
+    </parts>
+    <full>Bikestream | summarize ["Total Number of Bikes"] = sum(No_Bikes) by Neighbourhood</full>
+</command>

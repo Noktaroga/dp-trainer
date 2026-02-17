@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>Enmascaramiento Dinámico (Masking)</title>
+    <description>Ofusca datos sensibles como correos o teléfonos para usuarios sin privilegios. [Target Object: dbo.DimCustomer]</description>
+    <parts>
+        <part>
+            <text>ALTER TABLE dbo.DimCustomer</text>
+            <desc>Modifica la estructura de la tabla existente.</desc>
+        </part>
+        <part>
+            <text>ALTER COLUMN Email</text>
+            <desc>Selecciona la columna específica a proteger.</desc>
+        </part>
+        <part>
+            <text>ADD MASKED WITH (FUNCTION = 'email()')</text>
+            <desc>Aplica una función de enmascaramiento predefinida ('email()') que oculta parte del correo (ej: aXXX@XXXX.com).</desc>
+        </part>
+    </parts>
+    <full>ALTER TABLE dbo.DimCustomer ALTER COLUMN Email ADD MASKED WITH (FUNCTION = 'email()');</full>
+</command>

@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>CREATE TABLE AS SELECT (CTAS)</title>
+    <description>Crea una tabla nueva basándose en el resultado de una consulta. [Target Object: dbo.SalesSummary; Source Table: dbo.FactSales]</description>
+    <parts>
+        <part>
+            <text>CREATE TABLE dbo.SalesSummary AS</text>
+            <desc>Crea una nueva tabla 'SalesSummary' infiriendo el esquema del resultado del SELECT.</desc>
+        </part>
+        <part>
+            <text>SELECT ProductKey, SUM(SalesAmount) as Total</text>
+            <desc>Selecciona la columna de agrupación y calcula el total de ventas.</desc>
+        </part>
+        <part>
+            <text>FROM dbo.FactSales GROUP BY ProductKey</text>
+            <desc>Agrupa los datos origen por producto para la agregación.</desc>
+        </part>
+    </parts>
+    <full>CREATE TABLE dbo.SalesSummary AS SELECT ProductKey, SUM(SalesAmount) as Total FROM dbo.FactSales GROUP BY ProductKey;</full>
+</command>

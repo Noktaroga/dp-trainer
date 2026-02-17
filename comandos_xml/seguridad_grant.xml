@@ -1,0 +1,9 @@
+<command>
+    <title>Concesión de permisos de selección (GRANT)</title>
+    <description>Permite a un usuario o rol específico leer datos de una tabla o vista dentro del esquema dbo.</description>
+    <parts>
+        <part><text>GRANT SELECT</text><desc>Otorga permiso de lectura sobre el objeto.</desc></part>
+        <part><text>ON dbo.FactSales</text><desc>Especifica la tabla a la que se aplica el permiso.</desc></part>
+    </parts>
+    <full>GRANT SELECT ON dbo.FactSales TO [usuario@dominio.com];</full>
+</command>

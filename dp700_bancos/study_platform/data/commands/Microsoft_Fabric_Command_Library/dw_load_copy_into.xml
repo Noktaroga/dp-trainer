@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>Carga masiva con COPY INTO</title>
+    <description>Carga datos de archivos Parquet/CSV externos hacia una tabla del Warehouse. [Target Object: dbo.FactSales]</description>
+    <parts>
+        <part>
+            <text>COPY INTO dbo.FactSales</text>
+            <desc>Instrucción T-SQL de alto rendimiento para carga de datos.</desc>
+        </part>
+        <part>
+            <text>FROM 'https://mystorage.blob.core.windows.net/data/'</text>
+            <desc>Ubicación de origen de los archivos de datos (Azure Blob Storage o ADLS Gen2).</desc>
+        </part>
+        <part>
+            <text>WITH (FILE_TYPE = 'PARQUET')</text>
+            <desc>Opciones de carga: especifica el formato del archivo.</desc>
+        </part>
+    </parts>
+    <full>COPY INTO dbo.FactSales FROM 'https://mystorage.blob.core.windows.net/data/' WITH (FILE_TYPE = 'PARQUET');</full>
+</command>

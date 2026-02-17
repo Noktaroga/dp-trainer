@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>Guardado en Delta Lake</title>
+    <description>Guarda el DataFrame como una tabla en formato Delta. [Save Table: salesorders]</description>
+    <parts>
+        <part>
+            <text>.format("delta")</text>
+            <desc>Especifica el formato de archivo Delta de código abierto.</desc>
+        </part>
+        <part>
+            <text>.saveAsTable("salesorders")</text>
+            <desc>Registra la tabla en el metastore para que sea consultable con SQL.</desc>
+        </part>
+    </parts>
+    <full>df.write.format("delta").saveAsTable("salesorders")</full>
+</command>

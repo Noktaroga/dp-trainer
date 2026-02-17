@@ -1,0 +1,23 @@
+<command>
+	<title>CREATE TABLE de staging</title>
+	<description>Crea la tabla de staging con las columnas equivalentes a Trip más columnas técnicas.</description>
+	<parts>
+		<part>
+			<text>CREATE TABLE</text>
+			<desc>Instrucción para crear una nueva tabla.</desc>
+		</part>
+		<part>
+			<text>dbo</text>
+			<desc>Esquema donde se crea la tabla (puede variar según el proyecto).</desc>
+		</part>
+		<part>
+			<text>stg_Trip</text>
+			<desc>Nombre de la tabla de staging. stg_Trip</desc>
+		</part>
+		<part>
+			<text>( stgTrip_sk BIGINT NOT NULL, stgDateID INT NULL, stgMedallionID INT NULL, ... );</text>
+			<desc>Lista de columnas son: stgTrip_sk BIG INTEGER No acepta Null, stgDateID Acepta Entero Null, stgMedallionID acepta Entero Null</desc>
+		</part>
+	</parts>
+	<full>CREATE TABLE dbo.stg_Trip ( stgTrip_sk BIGINT NOT NULL, stgDateID INT NULL, stgMedallionID INT NULL, stgHackneyLicenseID INT NULL, stgPickupTimeID INT NULL, stgDropoffTimeID INT NULL, stgPickupGeographyID INT NULL, stgDropoffGeographyID INT NULL, stgPickupLatitude FLOAT NULL, stgPickupLongitude FLOAT NULL, stgPickupLatLong VARCHAR(50) NULL, stgDropoffLatitude FLOAT NULL, stgDropoffLongitude FLOAT NULL, stgDropoffLatLong VARCHAR(50) NULL, stgPassengerCount INT NULL, stgTripDurationSeconds INT NULL, stgTripDistanceMiles FLOAT NULL, stgPaymentType VARCHAR(50) NULL, stgFareAmount DECIMAL(18,2) NULL, stgSurchargeAmount DECIMAL(18,2) NULL, stgTaxAmount DECIMAL(18,2) NULL, stgTipAmount DECIMAL(18,2) NULL, stgTollsAmount DECIMAL(18,2) NULL, stgTotalAmount DECIMAL(18,2) NULL, CreatedAt DATETIME2(3) NOT NULL );</full>
+</command>

@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>Lectura Masiva Spark</title>
+    <description>Lee múltiples CSVs usando comodines y esquema. [Variable Name: df; Path: Files/orders/*.csv]</description>
+    <parts>
+        <part>
+            <text>df = spark.read.format("csv")</text>
+            <desc>Configura el lector para formato CSV.</desc>
+        </part>
+        <part>
+            <text>.schema(orderSchema)</text>
+            <desc>Impone el esquema 'orderSchema' a los datos leídos.</desc>
+        </part>
+        <part>
+            <text>.load("Files/orders/*.csv")</text>
+            <desc>Usa '*' como comodín para leer todos los archivos CSV en el directorio 'orders'.</desc>
+        </part>
+    </parts>
+    <full>df = spark.read.format("csv").schema(orderSchema).load("Files/orders/*.csv")</full>
+</command>

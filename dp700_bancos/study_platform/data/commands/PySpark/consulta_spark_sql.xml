@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>Consulta SQL con Spark</title>
+    <description>Ejecuta una consulta SQL estándar sobre una vista temporal o tabla del catálogo. [Source Table: salesorders]</description>
+    <parts>
+        <part>
+            <text>spark.sql("...")</text>
+            <desc>Punto de entrada para ejecutar comandos SQL dentro del entorno Spark.</desc>
+        </part>
+        <part>
+            <text>SELECT * FROM salesorders</text>
+            <desc>Selecciona todas las columnas de la tabla 'salesorders'.</desc>
+        </part>
+    </parts>
+    <full>spark.sql("SELECT * FROM salesorders").show()</full>
+</command>

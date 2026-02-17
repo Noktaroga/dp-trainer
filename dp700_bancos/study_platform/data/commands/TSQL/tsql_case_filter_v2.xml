@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>Filtrado Estándar</title>
+    <description>Mismo patrón de limpieza y filtrado. [Source Table: Bikestream]</description>
+    <parts>
+        <part>
+            <text>SUM(No_Bikes)</text>
+            <desc>Total de bicicletas.</desc>
+        </part>
+    </parts>
+    <full>SELECT CASE WHEN Neighbourhood IS NULL OR Neighbourhood = '' THEN 'Unidentified' ELSE Neighbourhood END AS Neighbourhood, SUM(No_Bikes) AS [Total Number of Bikes] FROM Bikestream GROUP BY CASE WHEN Neighbourhood IS NULL OR Neighbourhood = '' THEN 'Unidentified' ELSE Neighbourhood END HAVING Neighbourhood = 'Chelsea' ORDER BY Neighbourhood ASC;</full>
+</command>

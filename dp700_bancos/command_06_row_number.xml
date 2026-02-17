@@ -1,0 +1,19 @@
+<command>
+	<title>Generar surrogate key con ROW_NUMBER</title>
+	<description>Crea un identificador secuencial para cada fila al cargar staging.</description>
+	<parts>
+		<part>
+			<text>ROW_NUMBER()</text>
+			<desc>Función que genera un número consecutivo por fila.</desc>
+		</part>
+		<part>
+			<text>OVER (ORDER BY DateID, PickupTimeID)</text>
+			<desc>Ordena por fecha y hora de recogida para numerar las filas.</desc>
+		</part>
+		<part>
+			<text>AS stgTrip_sk</text>
+			<desc>Alias de la columna que almacenará el surrogate key.</desc>
+		</part>
+	</parts>
+	<full>ROW_NUMBER() OVER (ORDER BY DateID, PickupTimeID) AS stgTrip_sk</full>
+</command>

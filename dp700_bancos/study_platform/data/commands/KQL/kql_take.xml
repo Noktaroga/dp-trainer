@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>Muestreo básico con KQL</title>
+    <description>Recupera un número específico de filas arbitrarias de una tabla para explorar los datos rápidamente. [KQL Base Table: Bikestream]</description>
+    <parts>
+        <part>
+            <text>Bikestream</text>
+            <desc>Fuente de datos (tabla) sobre la que se opera.</desc>
+        </part>
+        <part>
+            <text>|</text>
+            <desc>El operador pipe pasa la salida de la tabla al siguiente operador.</desc>
+        </part>
+        <part>
+            <text>take 100</text>
+            <desc>Devuelve hasta 100 filas cualesquiera. No garantiza orden (usar 'top' si se requiere orden).</desc>
+        </part>
+    </parts>
+    <full>Bikestream | take 100</full>
+</command>

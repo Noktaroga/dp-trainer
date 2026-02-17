@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>Transformación de Columna</title>
+    <description>Modifica una columna existente extrayendo el año de una fecha. [Variable Name: transformed_df]</description>
+    <parts>
+        <part>
+            <text>df.withColumn("Year", ...)</text>
+            <desc>Devuelve un nuevo DataFrame añadiendo o reemplazando la columna 'Year'.</desc>
+        </part>
+        <part>
+            <text>year(col("OrderDate"))</text>
+            <desc>Función de Spark que extrae la parte del año de la columna de fecha 'OrderDate'.</desc>
+        </part>
+    </parts>
+    <full>transformed_df = df.withColumn("Year", year(col("OrderDate")))</full>
+</command>

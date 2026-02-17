@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>Filtrado de DataFrame</title>
+    <description>Selecciona filas que cumplen una condición especifica. [Variable Name: customers]</description>
+    <parts>
+        <part>
+            <text>df.select("FirstName", "Email")</text>
+            <desc>Proyección: selecciona solo las columnas Nombre y Email.</desc>
+        </part>
+        <part>
+            <text>.where(df["LastName"] == "Smith")</text>
+            <desc>Filtrado: Mantiene solo las filas donde el apellido es 'Smith'.</desc>
+        </part>
+    </parts>
+    <full>customers = df.select("FirstName", "Email").where(df["LastName"] == "Smith")</full>
+</command>

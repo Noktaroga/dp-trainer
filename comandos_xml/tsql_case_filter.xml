@@ -1,0 +1,9 @@
+<command>
+    <title>Filtrado Avanzado y CASE en T-SQL</title>
+    <description>Aplica lógica condicional compleja y filtra resultados agregados mediante la cláusula HAVING.</description>
+    <parts>
+        <part><text>CASE WHEN ... THEN ... ELSE ... END</text><desc>Estructura condicional de SQL para transformar valores.</desc></part>
+        <part><text>HAVING Neighbourhood = 'Chelsea'</text><desc>Filtra los grupos resultantes.</desc></part>
+    </parts>
+    <full>SELECT CASE WHEN Neighbourhood IS NULL OR Neighbourhood = '' THEN 'Unidentified' ELSE Neighbourhood END AS Neighbourhood, SUM(No_Bikes) AS [Total Number of Bikes] FROM Bikestream GROUP BY CASE WHEN Neighbourhood IS NULL OR Neighbourhood = '' THEN 'Unidentified' ELSE Neighbourhood END HAVING Neighbourhood = 'Chelsea' ORDER BY Neighbourhood ASC;</full>
+</command>

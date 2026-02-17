@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>Agregación con HAVING</title>
+    <description>Filtra grupos agregados y maneja nulos. [Source Table: Bikestream]</description>
+    <parts>
+        <part>
+            <text>CASE WHEN N IS NULL THEN 'U' ELSE N END</text>
+            <desc>Reemplaza nulos por 'U' en la visualización y agrupación.</desc>
+        </part>
+        <part>
+            <text>HAVING N = 'Chelsea'</text>
+            <desc>Filtra el resultado después de haber agrupado (solo muestra Chelsea).</desc>
+        </part>
+    </parts>
+    <full>SELECT CASE WHEN N IS NULL THEN 'U' ELSE N END AS N, SUM(B) FROM Bikestream GROUP BY CASE WHEN N IS NULL THEN 'U' ELSE N END HAVING N = 'Chelsea' ORDER BY N ASC;</full>
+</command>

@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>Time Travel - Leer Versión</title>
+    <description>Accede a datos históricos especificando la versión. [Variable Name: df; Path: Tables/sales_delta]</description>
+    <parts>
+        <part>
+            <text>df = spark.read</text>
+            <desc>Inicia la lectura de datos con SparkSession.</desc>
+        </part>
+        <part>
+            <text>.format("delta")</text>
+            <desc>Indica que la fuente de datos es una tabla Delta Lake.</desc>
+        </part>
+        <part>
+            <text>.option("versionAsOf", 0)</text>
+            <desc>Time Travel: Solicita leer el estado de los datos en la versión 0 (creación inicial).</desc>
+        </part>
+        <part>
+            <text>.load("Tables/sales_delta")</text>
+            <desc>Carga la tabla desde la ruta especificada.</desc>
+        </part>
+    </parts>
+    <full>df = spark.read.format("delta").option("versionAsOf", 0).load("Tables/sales_delta")</full>
+</command>

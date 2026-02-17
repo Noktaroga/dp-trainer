@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>Transformación Compleja</title>
+    <description>Aplica múltiples transformaciones: extrae año y divide nombre. [Variable Name: transformed_df]</description>
+    <parts>
+        <part>
+            <text>split(col("CustomerName"), " ")</text>
+            <desc>Divide el nombre completo por el espacio en un array de strings.</desc>
+        </part>
+        <part>
+            <text>.getItem(0)</text>
+            <desc>Obtiene el primer elemento del array (el nombre de pila).</desc>
+        </part>
+    </parts>
+    <full>transformed_df = df.withColumn("Year", year(col("OrderDate"))).withColumn("FirstName", split(col("CustomerName"), " ").getItem(0))</full>
+</command>

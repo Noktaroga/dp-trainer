@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>Resumen y Limpieza de Nulos</title>
+    <description>Variación de agregación manejando valores nulos en la columna de agrupación. [KQL Base Table: Bikestream; Group By: Neighbourhood]</description>
+    <parts>
+        <part>
+            <text>case(isempty(Neighbourhood), "Unidentified", Neighbourhood)</text>
+            <desc>Función escalar condicional: evalúa si el campo está vacío para asignar un valor por defecto.</desc>
+        </part>
+    </parts>
+    <full>Bikestream | summarize ["Total"] = sum(No_Bikes) by Neighbourhood | project Neighbourhood = case(isempty(Neighbourhood), "Unidentified", Neighbourhood)</full>
+</command>

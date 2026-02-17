@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>Proyección y Renombrado con KQL</title>
+    <description>Selecciona columnas específicas y permite asignar alias para mejorar la legibilidad. [KQL Base Table: Bikestream]</description>
+    <parts>
+        <part>
+            <text>project Street</text>
+            <desc>Selecciona la columna 'Street' para que aparezca en el resultado.</desc>
+        </part>
+        <part>
+            <text>["Number of Empty Docks"] = No_Empty_Docks</text>
+            <desc>Renombra la columna 'No_Empty_Docks' a un nombre más legible "Number of Empty Docks".</desc>
+        </part>
+        <part>
+            <text>take 10</text>
+            <desc>Limita el resultado a 10 registros arbitrarios para una vista previa rápida.</desc>
+        </part>
+    </parts>
+    <full>Bikestream | project Street, ["Number of Empty Docks"] = No_Empty_Docks | take 10</full>
+</command>

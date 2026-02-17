@@ -1,0 +1,15 @@
+<command>
+	<title>Generar CreatedAt con SYSUTCDATETIME</title>
+	<description>Guarda la fecha y hora de carga en la columna CreatedAt.</description>
+	<parts>
+		<part>
+			<text>SYSUTCDATETIME()</text>
+			<desc>Devuelve la fecha y hora actual en UTC.</desc>
+		</part>
+		<part>
+			<text>AS CreatedAt</text>
+			<desc>Alias de la columna que recibe la marca de tiempo.</desc>
+		</part>
+	</parts>
+	<full>SYSUTCDATETIME() AS CreatedAt</full>
+</command>

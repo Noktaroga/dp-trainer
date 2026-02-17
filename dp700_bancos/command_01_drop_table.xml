@@ -1,0 +1,15 @@
+<command>
+	<title>DROP TABLE de staging (si existe)</title>
+	<description>Elimina la tabla de staging anterior para poder crearla de nuevo sin errores.</description>
+	<parts>
+		<part>
+			<text>DROP TABLE IF EXISTS</text>
+			<desc>Instrucción que elimina la tabla solo si existe, evitando errores.</desc>
+		</part>
+		<part>
+			<text>dbo.stg_Trip</text>
+			<desc>Nombre completo (esquema + tabla) de la tabla de staging a eliminar. stg_Trip</desc>
+		</part>
+	</parts>
+	<full>DROP TABLE IF EXISTS dbo.stg_Trip;</full>
+</command>

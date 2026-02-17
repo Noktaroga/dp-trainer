@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>Guardado Particionado</title>
+    <description>Persiste datos en Parquet particionados por tiempo. [Path: Files/transformed_data]</description>
+    <parts>
+        <part>
+            <text>df.write.partitionBy("Year","Month")</text>
+            <desc>Organiza la salida en carpetas jerárquicas (Year=YYYY/Month=MM) para optimizar lecturas futuras.</desc>
+        </part>
+        <part>
+            <text>.mode("overwrite")</text>
+            <desc>Si los datos ya existen en el destino, los reemplaza por completo.</desc>
+        </part>
+        <part>
+            <text>.parquet("Files/transformed_data")</text>
+            <desc>Escribe los datos en formato Parquet en la ruta especificada.</desc>
+        </part>
+    </parts>
+    <full>df.write.partitionBy("Year","Month").mode("overwrite").parquet("Files/transformed_data")</full>
+</command>

@@ -1,0 +1,23 @@
+<command>
+	<title>Consultar metadatos de Trip</title>
+	<description>Obtiene la lista de columnas y tipos de datos de Trip para diseñar la staging.</description>
+	<parts>
+		<part>
+			<text>SELECT COLUMN_NAME, DATA_TYPE, CHARACTER_MAXIMUM_LENGTH</text>
+			<desc>Selecciona tres campos: (nombre de la columna), (tipo de dato, como INT, VARCHAR, etc.), y (longitud máxima para tipos de texto).</desc>
+		</part>
+		<part>
+			<text>FROM INFORMATION_SCHEMA.COLUMNS</text>
+			<desc>Consulta la vista que contiene información sobre todas las columnas de todas las tablas de la base de datos (nombre, tipo, longitud, etc.). Es útil para obtener metadatos y diseñar nuevas tablas.</desc>
+		</part>
+		<part>
+			<text>WHERE TABLE_NAME = 'Trip'</text>
+			<desc>Filtra el resultado para mostrar solo las columnas de la tabla Trip, ignorando las de otras tablas. Así obtienes únicamente la estructura de Trip.</desc>
+		</part>
+		<part>
+			<text>ORDER BY ORDINAL_POSITION</text>
+			<desc>Ordena las columnas según su posición original.</desc>
+		</part>
+	</parts>
+	<full>SELECT COLUMN_NAME, DATA_TYPE, CHARACTER_MAXIMUM_LENGTH FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'Trip' ORDER BY ORDINAL_POSITION;</full>
+</command>

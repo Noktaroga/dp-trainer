@@ -1,0 +1,15 @@
+<command>
+	<title>INSERT INTO staging desde Trip</title>
+	<description>Puebla la tabla de staging con los datos de Trip.</description>
+	<parts>
+		<part>
+			<text>INSERT INTO dbo.stg_Trip ( stgTrip_sk, stgDateID, stgMedallionID, stgPassengerCount, CreatedAt )</text>
+			<desc>Especifica la tabla de staging y el orden de las columnas destino: stgTrip_sk (clave), stgDateID (fecha), stgMedallionID (identificador), stgPassengerCount (cantidad de pasajeros), CreatedAt (marca de tiempo).</desc>
+		</part>
+		<part>
+			<text>SELECT ROW_NUMBER() OVER (ORDER BY DateID) AS stgTrip_sk, DateID, MedallionID, PassengerCount, SYSUTCDATETIME() AS CreatedAt FROM dbo.Trip</text>
+			<desc>Selecciona las columnas de Trip que se insertarán en staging: genera la clave con ROW_NUMBER, toma la fecha, el identificador, la cantidad de pasajeros y la marca de tiempo actual.</desc>
+		</part>
+	</parts>
+	<full>INSERT INTO dbo.stg_Trip ( stgTrip_sk, stgDateID, stgMedallionID, stgHackneyLicenseID, stgPickupTimeID, stgDropoffTimeID, stgPickupGeographyID, stgDropoffGeographyID, stgPickupLatitude, stgPickupLongitude, stgPickupLatLong, stgDropoffLatitude, stgDropoffLongitude, stgDropoffLatLong, stgPassengerCount, stgTripDurationSeconds, stgTripDistanceMiles, stgPaymentType, stgFareAmount, stgSurchargeAmount, stgTaxAmount, stgTipAmount, stgTollsAmount, stgTotalAmount, CreatedAt ) SELECT ROW_NUMBER() OVER (ORDER BY DateID, PickupTimeID) AS stgTrip_sk, DateID, MedallionID, HackneyLicenseID, PickupTimeID, DropoffTimeID, PickupGeographyID, DropoffGeographyID, PickupLatitude, PickupLongitude, PickupLatLong, DropoffLatitude, DropoffLongitude, DropoffLatLong, PassengerCount, TripDurationSeconds, TripDistanceMiles, PaymentType, FareAmount, SurchargeAmount, TaxAmount, TipAmount, TollsAmount, TotalAmount, SYSUTCDATETIME() AS CreatedAt FROM dbo.Trip;</full>
+</command>

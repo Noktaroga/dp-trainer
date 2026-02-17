@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>Ver Historial de Delta</title>
+    <description>Muestra las transacciones y versiones de una tabla Delta. [Source Table: delta.tables]</description>
+    <parts>
+        <part>
+            <text>from delta.tables import DeltaTable</text>
+            <desc>Importa la clase DeltaTable necesaria para interactuar con metadatos de Delta Lake.</desc>
+        </part>
+        <part>
+            <text>deltaTable = DeltaTable.forPath(spark, "Tables/sales_delta")</text>
+            <desc>Crea una instancia de DeltaTable apuntando a la ruta física de los datos.</desc>
+        </part>
+        <part>
+            <text>deltaTable.history().show()</text>
+            <desc>Recupera y muestra el log de transacciones (historial de commits) de la tabla.</desc>
+        </part>
+    </parts>
+    <full>from delta.tables import DeltaTable; deltaTable = DeltaTable.forPath(spark, "Tables/sales_delta"); deltaTable.history().show()</full>
+</command>

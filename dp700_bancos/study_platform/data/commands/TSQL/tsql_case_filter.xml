@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>Filtrado con CASE complejo</title>
+    <description>Lógica condicional detallada para limpieza de datos. [Source Table: Bikestream]</description>
+    <parts>
+        <part>
+            <text>CASE WHEN ... IS NULL OR ... = ''</text>
+            <desc>Verifica si el vecindario es nulo o cadena vacía.</desc>
+        </part>
+        <part>
+            <text>THEN 'Unidentified'</text>
+            <desc>Asigna valor por defecto si cumple la condición.</desc>
+        </part>
+    </parts>
+    <full>SELECT CASE WHEN Neighbourhood IS NULL OR Neighbourhood = '' THEN 'Unidentified' ELSE Neighbourhood END AS Neighbourhood, SUM(No_Bikes) AS [Total Number of Bikes] FROM Bikestream GROUP BY CASE WHEN Neighbourhood IS NULL OR Neighbourhood = '' THEN 'Unidentified' ELSE Neighbourhood END HAVING Neighbourhood = 'Chelsea' ORDER BY Neighbourhood ASC;</full>
+</command>

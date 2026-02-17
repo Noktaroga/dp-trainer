@@ -1,0 +1,15 @@
+<command>
+	<title>SELECT de inspección de Trip</title>
+	<description>Revisa algunas filas de la tabla Trip para entender sus datos.</description>
+	<parts>
+		<part>
+			<text>SELECT TOP 10 *</text>
+			<desc>Devuelve las primeras 10 filas con todas las columnas.</desc>
+		</part>
+		<part>
+			<text>FROM dbo.Trip</text>
+			<desc>Indica que los datos se leen de la tabla Trip en el esquema dbo.</desc>
+		</part>
+	</parts>
+	<full>SELECT TOP 10 * FROM dbo.Trip;</full>
+</command>

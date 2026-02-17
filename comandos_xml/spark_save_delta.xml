@@ -1,0 +1,9 @@
+<command>
+    <title>Persistencia en Tablas Delta</title>
+    <description>Registra un DataFrame como tabla relacional gestionada en el Lakehouse.</description>
+    <parts>
+        <part><text>format("delta")</text><desc>Formato con soporte para transacciones.</desc></part>
+        <part><text>saveAsTable("salesorders")</text><desc>Registra la tabla en el catálogo.</desc></part>
+    </parts>
+    <full>df.write.format("delta").saveAsTable("salesorders")</full>
+</command>

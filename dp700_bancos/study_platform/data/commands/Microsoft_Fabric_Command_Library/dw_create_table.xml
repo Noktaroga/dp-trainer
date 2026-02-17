@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>CREAR TABLA en DW</title>
+    <description>Crea una tabla relacional con tipos de datos SQL. [Target Object: dbo.DimProduct]</description>
+    <parts>
+        <part>
+            <text>CREATE TABLE dbo.DimProduct</text>
+            <desc>Crea una tabla nueva en el esquema predeterminado 'dbo'.</desc>
+        </part>
+        <part>
+            <text>( ProductKey INTEGER NOT NULL,</text>
+            <desc>Define una columna de enteros obligatoria.</desc>
+        </part>
+        <part>
+            <text>ProductName VARCHAR(50) NOT NULL,</text>
+            <desc>Define una columna de cadena de longitud variable obligatoria.</desc>
+        </part>
+        <part>
+            <text>ListPrice DECIMAL(5,2) NULL );</text>
+            <desc>Define una columna decimal (5 dígitos total, 2 decimales) que permite nulos.</desc>
+        </part>
+    </parts>
+    <full>CREATE TABLE dbo.DimProduct ( ProductKey INTEGER NOT NULL, ProductName VARCHAR(50) NOT NULL, ListPrice DECIMAL(5,2) NULL );</full>
+</command>

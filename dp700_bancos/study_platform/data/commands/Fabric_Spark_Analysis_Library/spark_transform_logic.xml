@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>Transformación PySpark</title>
+    <description>Extracción de fecha y división de texto en columnas. [Variable Name: df]</description>
+    <parts>
+        <part>
+            <text>df = df.withColumn("Year", year(col("OrderDate")))</text>
+            <desc>Crea una nueva columna 'Year' extrayendo el año de 'OrderDate' usando la función `year`.</desc>
+        </part>
+        <part>
+            <text>.withColumn("FirstName", split(col("CustomerName"), " ").getItem(0))</text>
+            <desc>Divide 'CustomerName' por espacios y toma el primer elemento (índice 0) para crear 'FirstName'.</desc>
+        </part>
+    </parts>
+    <full>df = df.withColumn("Year", year(col("OrderDate"))).withColumn("FirstName", split(col("CustomerName"), " ").getItem(0))</full>
+</command>

@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>Guardado Particionado</title>
+    <description>Escribe datos en formato Parquet organizados por carpetas de año y mes. [Path: Files/partitioned_data]</description>
+    <parts>
+        <part>
+            <text>.partitionBy("Year","Month")</text>
+            <desc>Estrategia de almacenamiento físico: crea estructura de directorios /Year=X/Month=Y/.</desc>
+        </part>
+        <part>
+            <text>.mode("overwrite")</text>
+            <desc>Reemplaza los datos existentes en el destino si ya hay archivos.</desc>
+        </part>
+    </parts>
+    <full>df.write.partitionBy("Year","Month").mode("overwrite").parquet("Files/partitioned_data")</full>
+</command>

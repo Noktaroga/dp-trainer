@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>CREAR TABLA en DW</title>
+    <description>Crea una tabla relacional con tipos de datos SQL. [Target Object: dbo.DimProduct]</description>
+    <parts>
+        <part>
+            <text>CREATE TABLE dbo.DimProduct</text>
+            <desc>Define una nueva tabla en el esquema 'dbo' con el nombre 'DimProduct'.</desc>
+        </part>
+        <part>
+            <text>( ProductKey INTEGER NOT NULL,</text>
+            <desc>Define la columna clave primaria como un entero que no permite valores nulos.</desc>
+        </part>
+        <part>
+            <text>ProductName VARCHAR(50) NOT NULL );</text>
+            <desc>Define una columna de texto de longitud variable hasta 50 caracteres, obligatoria.</desc>
+        </part>
+    </parts>
+    <full>CREATE TABLE dbo.DimProduct ( ProductKey INTEGER NOT NULL, ProductName VARCHAR(50) NOT NULL );</full>
+</command>

@@ -1,0 +1,10 @@
+<command>
+    <title>Consulta con JOIN y Agregación</title>
+    <description>Une una tabla de hechos con una dimensión para calcular ingresos totales por tiempo.</description>
+    <parts>
+        <part><text>JOIN DimDate AS d ON ...</text><desc>Une FactSalesOrder con DimDate usando llaves foráneas.</desc></part>
+        <part><text>SUM(so.SalesTotal)</text><desc>Suma los ingresos totales.</desc></part>
+        <part><text>GROUP BY d.[Year]</text><desc>Agrupa los resultados por la jerarquía de año.</desc></part>
+    </parts>
+    <full>SELECT d.[Year] AS CalendarYear, d.[Month] AS MonthOfYear, SUM(so.SalesTotal) AS SalesRevenue FROM FactSalesOrder AS so JOIN DimDate AS d ON so.SalesOrderDateKey = d.DateKey GROUP BY d.[Year], d.[Month], d.MonthName ORDER BY CalendarYear, MonthOfYear;</full>
+</command>

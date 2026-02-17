@@ -1,0 +1,18 @@
+{
+  "total_study_time_minutes": 0.0,
+  "total_sessions": 0,
+  "current_streak_days": 0,
+  "longest_streak_days": 0,
+  "last_study_date": "",
+  "sql_commands_completed": 0,
+  "sql_total_attempts": 1,
+  "sql_total_errors": 1,
+  "sql_current_streak": 0,
+  "sql_best_streak": 0,
+  "quiz_questions_answered": 0,
+  "quiz_correct_answers": 0,
+  "quiz_current_streak": 0,
+  "quiz_best_streak": 0,
+  "achievements_unlocked": [],
+  "total_xp": 0
+}

@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>Monitoreo de Requests SQL</title>
+    <description>Visualiza las consultas activas y su tiempo de ejecución acumulado. [Source Table: sys.dm_exec_requests]</description>
+    <parts>
+        <part>
+            <text>SELECT session_id, command, status</text>
+            <desc>Recupera información sobre qué comando se está ejecutando y su estado.</desc>
+        </part>
+        <part>
+            <text>FROM sys.dm_exec_requests</text>
+            <desc>Consulta la DMV de solicitudes activas en el motor SQL.</desc>
+        </part>
+        <part>
+            <text>WHERE status = 'running'</text>
+            <desc>Filtra para mostrar únicamente las consultas que están actualmente en ejecución.</desc>
+        </part>
+    </parts>
+    <full>SELECT session_id, command, status, total_elapsed_time FROM sys.dm_exec_requests WHERE status = 'running';</full>
+</command>

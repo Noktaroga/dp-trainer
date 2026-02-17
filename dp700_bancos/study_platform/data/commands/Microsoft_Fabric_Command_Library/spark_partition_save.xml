@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>Escritura Particionada Spark</title>
+    <description>Guarda datos en carpetas por año/mes para optimizar consultas. [Path: Files/data]</description>
+    <parts>
+        <part>
+            <text>df.write.partitionBy("Year","Month")</text>
+            <desc>Instruye a Spark para escribir los datos en subdirectorios basados en los valores de Año y Mes.</desc>
+        </part>
+        <part>
+            <text>.mode("overwrite")</text>
+            <desc>Sobrescribe los datos existentes en la ruta de destino si ya existen.</desc>
+        </part>
+        <part>
+            <text>.parquet("Files/data")</text>
+            <desc>Formato y ruta de salida. Parquet es columnar y eficiente para estas estructuras.</desc>
+        </part>
+    </parts>
+    <full>df.write.partitionBy("Year","Month").mode("overwrite").parquet("Files/data")</full>
+</command>

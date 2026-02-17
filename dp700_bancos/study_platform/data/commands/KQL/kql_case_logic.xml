@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>Lógica Condicional (Case)</title>
+    <description>Uso de condicionales para transformar datos en la proyección. [KQL Base Table: Bikestream; Group By: Neighbourhood]</description>
+    <parts>
+         <part>
+            <text>project Neighbourhood =</text>
+            <desc>Define o redefine la columna Neighbourhood en la salida.</desc>
+        </part>
+        <part>
+            <text>case(isempty(Neighbourhood), "Unidentified", Neighbourhood)</text>
+            <desc>Si Neighbourhood está vacío, usa "Unidentified"; de lo contrario, usa el valor original.</desc>
+        </part>
+    </parts>
+    <full>Bikestream | summarize ["Total"] = sum(No_Bikes) by Neighbourhood | project Neighbourhood = case(isempty(Neighbourhood), "Unidentified", Neighbourhood)</full>
+</command>
