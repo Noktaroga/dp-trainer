@@ -36,6 +36,9 @@ class UserStatistics:
     achievements_unlocked: List[str] = field(default_factory=list)
     total_xp: int = 0
     
+    # Detail Metrics per Command
+    sql_command_metrics: dict = field(default_factory=dict)  # {cmd_id: {'attempts': 0, 'correct': 0, 'errors': 0}}
+
     @property
     def sql_accuracy(self) -> float:
         """Precisión en SQL trainer"""
@@ -71,6 +74,7 @@ class UserStatistics:
             'sql_total_errors': self.sql_total_errors,
             'sql_current_streak': self.sql_current_streak,
             'sql_best_streak': self.sql_best_streak,
+            'sql_command_metrics': self.sql_command_metrics, # New field
             'quiz_questions_answered': self.quiz_questions_answered,
             'quiz_correct_answers': self.quiz_correct_answers,
             'quiz_current_streak': self.quiz_current_streak,
@@ -82,4 +86,7 @@ class UserStatistics:
     @classmethod
     def from_dict(cls, data: dict) -> 'UserStatistics':
         """Crea instancia desde diccionario"""
+        # Ensure sql_command_metrics exists if loading from old file
+        if 'sql_command_metrics' not in data:
+            data['sql_command_metrics'] = {}
         return cls(**data)

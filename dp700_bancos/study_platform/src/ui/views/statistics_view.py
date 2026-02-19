@@ -197,6 +197,60 @@ class StatisticsView(QWidget):
             sql_layout.addWidget(card_sql_streak)
             
             content_layout.addLayout(sql_layout)
+            
+            # --- Weakest Commands Section ---
+            lbl_weak = QLabel("⚡ Comandos que requieren atención (Menor precisión)")
+            lbl_weak.setProperty("labelType", "subtitle")
+            content_layout.addWidget(lbl_weak)
+            
+            weak_layout = QVBoxLayout()
+            weak_layout.setSpacing(Spacing.SM)
+            
+            # Helper to get command by ID
+            cmd_map = {str(c.id): c for c in self.commands}
+            
+            # Calculate metrics list
+            metrics_list = []
+            for cmd_id, m in self.user_stats.sql_command_metrics.items():
+                if m['attempts'] > 0:
+                    acc = (m['correct'] / m['attempts']) * 100
+                    cmd_obj = cmd_map.get(str(cmd_id))
+                    title = cmd_obj.title if cmd_obj else f"Command {cmd_id}"
+                    metrics_list.append({
+                        'id': cmd_id,
+                        'title': title,
+                        'accuracy': acc,
+                        'attempts': m['attempts'],
+                        'correct': m['correct']
+                    })
+            
+            # Sort: lowest accuracy first, then highest attempts (prioritize identifying consistent failures)
+            metrics_list.sort(key=lambda x: (x['accuracy'], -x['attempts']))
+            
+            top_weak = metrics_list[:5]
+            
+            if not top_weak:
+                lbl_no_data = QLabel("No hay suficientes datos. ¡Sigue practicando!")
+                lbl_no_data.setStyleSheet(f"color: {ModernColors.LIGHT['text_secondary']}; font-style: italic;")
+                weak_layout.addWidget(lbl_no_data)
+            else:
+                for item in top_weak:
+                    row_frame = QFrame()
+                    row_frame.setStyleSheet(f"""
+                        background-color: {ModernColors.LIGHT['bg_secondary']};
+                        border-radius: {BorderRadius.SM}px;
+                        padding: {Spacing.SM}px;
+                    """)
+                    row_layout = QHBoxLayout(row_frame)
+                    
+                    lbl_name = QLabel(f"<b>{item['title']}</b>")
+                    lbl_stats = QLabel(f"Precisión: <span style='color:{ModernColors.LIGHT['error']}'>{item['accuracy']:.1f}%</span> ({item['correct']}/{item['attempts']})")
+                    
+                    row_layout.addWidget(lbl_name, 1)
+                    row_layout.addWidget(lbl_stats)
+                    weak_layout.addWidget(row_frame)
+            
+            content_layout.addLayout(weak_layout)
         # ---------------------------------------------------------
 
         # 3. Desglose por Módulo

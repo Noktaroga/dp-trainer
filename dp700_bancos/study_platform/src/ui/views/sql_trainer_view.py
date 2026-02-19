@@ -243,12 +243,20 @@ class SQLTrainerView(QWidget):
         title = QLabel("💻 SQL Trainer (T-SQL & KQL)")
         title.setProperty("labelType", "title")
         
+        title = QLabel("💻 SQL Trainer (T-SQL & KQL)")
+        title.setProperty("labelType", "title")
+        
         self.lbl_progress = QLabel(f"Ejercicio 1/{len(self.commands)}") if self.commands else QLabel("0/0")
         
+        # Stats Label
+        self.lbl_cmd_stats = QLabel("")
+        self.lbl_cmd_stats.setStyleSheet(f"color: {ModernColors.LIGHT['text_secondary']}; font-size: {Typography.SIZE_SM}px; margin-right: {Spacing.LG}px;")
+
         layout.addWidget(back_btn)
         layout.addStretch()
         layout.addWidget(title)
         layout.addStretch()
+        layout.addWidget(self.lbl_cmd_stats)
         layout.addWidget(self.lbl_progress)
         
         header.setLayout(layout)
@@ -288,6 +296,21 @@ class SQLTrainerView(QWidget):
             self.lbl_title.setText("-")
             self.lbl_description.setText("-")
 
+    def update_stats_display(self):
+        """Actualiza la etiqueta de estadísticas con los datos actuales"""
+        if hasattr(self, 'lbl_cmd_stats') and self.persistence:
+            stats = self.persistence.load_user_stats()
+            cmd = self.commands[self.current_index]
+            cmd_id = str(cmd.id)
+            metrics = stats.sql_command_metrics.get(cmd_id, {'attempts': 0, 'correct': 0, 'errors': 0})
+            
+            att = metrics['attempts']
+            ok = metrics['correct']
+            err = metrics['errors']
+            rate = int((ok / att * 100)) if att > 0 else 0
+            
+            self.lbl_cmd_stats.setText(f"📊 Historial: {att} intentos | ✅ {ok} | ❌ {err} ({rate}%)")
+
     def load_command(self):
         if self.current_index >= len(self.commands):
             return
@@ -305,6 +328,8 @@ class SQLTrainerView(QWidget):
         
         if hasattr(self, 'lbl_progress'):
             self.lbl_progress.setText(f"Ejercicio {self.current_index + 1}/{len(self.commands)}")
+            
+        self.update_stats_display()
 
     def normalize_sql(self, sql):
         """Normaliza SQL para comparación (quita espacios extra, mayúsculas, signos)"""
@@ -327,13 +352,21 @@ class SQLTrainerView(QWidget):
         if self.persistence:
             stats = self.persistence.load_user_stats()
             stats.sql_total_attempts += 1
+            
+            # --- METRICS PER COMMAND ---
+            cmd_id = str(cmd.id) # Ensure string key
+            if cmd_id not in stats.sql_command_metrics:
+                stats.sql_command_metrics[cmd_id] = {'attempts': 0, 'correct': 0, 'errors': 0}
+            
+            stats.sql_command_metrics[cmd_id]['attempts'] += 1
         
         # Comparación directa
         if normalized_user == normalized_target:
             if stats:
                 stats.sql_commands_completed += 1
+                stats.sql_command_metrics[cmd_id]['correct'] += 1
+                
                 # Usar el nombre del comando como ID único
-                cmd_id = cmd.id
                 if cmd_id not in stats.sql_completed_ids:
                     stats.sql_completed_ids.append(cmd_id)
                 
@@ -343,6 +376,7 @@ class SQLTrainerView(QWidget):
                     stats.sql_best_streak = stats.sql_current_streak
                     
                 self.persistence.save_user_stats(stats)
+                self.update_stats_display() # New
                 
             self.show_success(target_sql)
             return
@@ -350,8 +384,10 @@ class SQLTrainerView(QWidget):
         # Si falló, registrar error y resetear racha
         if stats:
             stats.sql_total_errors += 1
+            stats.sql_command_metrics[cmd_id]['errors'] += 1
             stats.sql_current_streak = 0
             self.persistence.save_user_stats(stats)
+            self.update_stats_display() # New
 
         # Verificar keywords
         missing = []
