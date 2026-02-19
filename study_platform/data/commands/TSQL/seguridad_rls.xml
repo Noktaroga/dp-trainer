@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>Seguridad RLS (Row-Level Security)</title>
+    <description>Crea una política de seguridad para filtrar filas. [Target Object: dbo.FactSales]</description>
+    <parts>
+        <part>
+            <text>CREATE SECURITY POLICY SalesFilter</text>
+            <desc>Nombre de la política.</desc>
+        </part>
+        <part>
+            <text>ADD FILTER PREDICATE ...</text>
+            <desc>Añade la lógica de filtrado (función predicado).</desc>
+        </part>
+    </parts>
+    <full>CREATE SECURITY POLICY SalesFilter ADD FILTER PREDICATE Sales.fn_securitypredicate(SalesTerritory) ON dbo.FactSales WITH (STATE = ON);</full>
+</command>

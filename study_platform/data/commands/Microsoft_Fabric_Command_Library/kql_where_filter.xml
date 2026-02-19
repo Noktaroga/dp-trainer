@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>Filtrado KQL</title>
+    <description>Filtra registros por una condición específica. [KQL Base Table: Bikestream]</description>
+    <parts>
+        <part>
+            <text>Bikestream</text>
+            <desc>Tabla de origen.</desc>
+        </part>
+        <part>
+            <text>where Neighbourhood == 'Chelsea'</text>
+            <desc>Operador de filtrado: mantiene solo las filas que cumplen la condición exacta.</desc>
+        </part>
+        <part>
+            <text>take 10</text>
+            <desc>Muestra una muestra de 10 registros del resultado filtrado.</desc>
+        </part>
+    </parts>
+    <full>Bikestream | where Neighbourhood == 'Chelsea' | take 10</full>
+</command>

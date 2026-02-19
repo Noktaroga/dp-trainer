@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>Agregación y Agrupado</title>
+    <description>Cálculo de métricas (sumas) agrupadas por una categoría. [Variable Name: productSales]</description>
+    <parts>
+        <part>
+            <text>df.select("Item", "Quantity")</text>
+            <desc>Selecciona subconjunto de columnas para optimizar memoria.</desc>
+        </part>
+        <part>
+            <text>.groupBy("Item")</text>
+            <desc>Agrupa las filas basándose en el valor de la columna 'Item'.</desc>
+        </part>
+        <part>
+            <text>.sum()</text>
+            <desc>Aplica la función de suma a las columnas numéricas restantes en el grupo.</desc>
+        </part>
+    </parts>
+    <full>productSales = df.select("Item", "Quantity").groupBy("Item").sum()</full>
+</command>

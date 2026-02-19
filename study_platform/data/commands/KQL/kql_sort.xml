@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>Ordenamiento de resultados en KQL</title>
+    <description>Ordena el conjunto de resultados de forma ascendente o descendente basándose en una columna. [KQL Base Table: Bikestream; Group By: Neighbourhood]</description>
+    <parts>
+        <part>
+            <text>summarize ... by Neighbourhood</text>
+            <desc>Primero realiza la agregación de datos agrupada por vecindario.</desc>
+        </part>
+        <part>
+            <text>sort by Neighbourhood asc</text>
+            <desc>Luego ordena la tabla resultante alfabéticamente por la columna de agrupación.</desc>
+        </part>
+    </parts>
+    <full>Bikestream | summarize ["Total Number of Bikes"] = sum(No_Bikes) by Neighbourhood | sort by Neighbourhood asc</full>
+</command>

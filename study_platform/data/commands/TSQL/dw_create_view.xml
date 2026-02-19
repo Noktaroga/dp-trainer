@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>CREAR VISTA en DW</title>
+    <description>Encapsula lógica de unión compleja en una vista reutilizable. [Target Object: vSalesByRegion; Source Table: FactSalesOrder; Joined Tables: DimDate, DimCustomer]</description>
+    <parts>
+        <part>
+            <text>CREATE VIEW vSalesByRegion AS SELECT</text>
+            <desc>Define la vista basada en el resultado de la consulta SELECT siguiente.</desc>
+        </part>
+        <part>
+            <text>JOIN DimDate AS d ON ...</text>
+            <desc>Une con tabla de dimensiones de fecha.</desc>
+        </part>
+        <part>
+            <text>GROUP BY ...</text>
+            <desc>Agrega los resultados por año, mes y región.</desc>
+        </part>
+    </parts>
+    <full>CREATE VIEW vSalesByRegion AS SELECT d.[Year] AS CalendarYear, c.CountryRegion AS SalesRegion, SUM(so.SalesTotal) AS SalesRevenue FROM FactSalesOrder AS so JOIN DimDate AS d ON so.SalesOrderDateKey = d.DateKey JOIN DimCustomer AS c ON so.CustomerKey = c.CustomerKey GROUP BY d.[Year], d.[Month], d.MonthName, c.CountryRegion;</full>
+</command>

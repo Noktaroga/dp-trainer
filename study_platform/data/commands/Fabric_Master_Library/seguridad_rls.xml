@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>Seguridad de Fila (RLS)</title>
+    <description>Aplica filtrado automático por usuario para restringir acceso a filas.</description>
+    <parts>
+        <part>
+            <text>CREATE SECURITY POLICY SalesFilter</text>
+            <desc>Crea un objeto contenedor (política) para reglas de seguridad RLS.</desc>
+        </part>
+        <part>
+            <text>ADD FILTER PREDICATE Sales.fn_predicate(Region)</text>
+            <desc>Asocia una función de predicado (lógica de filtro) a una columna específica (Region).</desc>
+        </part>
+        <part>
+            <text>ON dbo.Sales</text>
+            <desc>Aplica esta política a la tabla de Ventas.</desc>
+        </part>
+        <part>
+            <text>WITH (STATE = ON)</text>
+            <desc>Habilita la política inmediatamente tras su creación.</desc>
+        </part>
+    </parts>
+    <full>CREATE SECURITY POLICY SalesFilter ADD FILTER PREDICATE Sales.fn_predicate(Region) ON dbo.Sales WITH (STATE = ON);</full>
+</command>

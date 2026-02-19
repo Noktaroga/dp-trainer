@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>Crear Tabla Delta</title>
+    <description>Guarda un DataFrame como tabla Delta en el Metastore. [Save Table: sales_delta]</description>
+    <parts>
+        <part>
+            <text>df.write</text>
+            <desc>Inicia la interfaz de escritura del DataFrame (DataFrameWriter).</desc>
+        </part>
+        <part>
+            <text>.format("delta")</text>
+            <desc>Especifica que el formato de almacenamiento será Delta Lake (formato columnar abierto).</desc>
+        </part>
+        <part>
+            <text>.saveAsTable("sales_delta")</text>
+            <desc>Guarda los datos como una tabla administrada en el metastore de Hive/Fabric con el nombre indicado.</desc>
+        </part>
+    </parts>
+    <full>df.write.format("delta").saveAsTable("sales_delta")</full>
+</command>

@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>Carga masiva con COPY INTO</title>
+    <description>Carga eficiente de archivos Parquet/CSV externos. [Target Object: dbo.FactSales]</description>
+    <parts>
+        <part>
+            <text>COPY INTO dbo.FactSales</text>
+            <desc>Inicia la copia masiva de datos hacia la tabla destino.</desc>
+        </part>
+        <part>
+            <text>FROM 'https://storage.blob.core.windows.net/data/'</text>
+            <desc>Indica la URL base del contenedor de almacenamiento de origen.</desc>
+        </part>
+        <part>
+            <text>WITH (FILE_TYPE = 'PARQUET')</text>
+            <desc>Especifica que el formato de los archivos fuente es Parquet.</desc>
+        </part>
+    </parts>
+    <full>COPY INTO dbo.FactSales FROM 'https://storage.blob.core.windows.net/data/' WITH (FILE_TYPE = 'PARQUET');</full>
+</command>

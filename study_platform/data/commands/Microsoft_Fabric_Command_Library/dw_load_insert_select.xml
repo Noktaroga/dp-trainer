@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>Carga con INSERT AS SELECT</title>
+    <description>Mueve datos transformados desde tablas de staging a tablas finales. [Target Object: dbo.DimProduct; Source Table: stg.ProductLoad]</description>
+    <parts>
+        <part>
+            <text>INSERT INTO dbo.DimProduct (ProductAltKey, ProductName)</text>
+            <desc>Especifica la tabla y columnas de destino para la inserción.</desc>
+        </part>
+        <part>
+            <text>SELECT DISTINCT ProductID, ProductName</text>
+            <desc>Selecciona valores únicos de la fuente para evitar duplicados.</desc>
+        </part>
+        <part>
+            <text>FROM stg.ProductLoad</text>
+            <desc>Tabla de origen (staging area) donde se cargaron los datos brutos inicialmente.</desc>
+        </part>
+    </parts>
+    <full>INSERT INTO dbo.DimProduct (ProductAltKey, ProductName) SELECT DISTINCT ProductID, ProductName FROM stg.ProductLoad;</full>
+</command>

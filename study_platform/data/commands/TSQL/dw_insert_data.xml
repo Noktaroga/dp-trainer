@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>INSERTAR DATOS MANUALMENTE</title>
+    <description>Inserta filas específicas en una tabla. [Target Object: dbo.DimProduct]</description>
+    <parts>
+        <part>
+            <text>INSERT INTO dbo.DimProduct</text>
+            <desc>Tabla destino.</desc>
+        </part>
+        <part>
+            <text>VALUES (1, 'RING1', ...)</text>
+            <desc>Valores correspondientes a las columnas de la tabla en el orden definido.</desc>
+        </part>
+    </parts>
+    <full>INSERT INTO dbo.DimProduct VALUES (1, 'RING1', 'Bicycle bell', 'Accessories', 5.99), (2, 'BRITE1', 'Front light', 'Accessories', 15.49), (3, 'BRITE2', 'Rear light', 'Accessories', 15.49);</full>
+</command>

@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>Consultas Cross-Database</title>
+    <description>Unión de tablas entre diferentes Warehouses o SQL Endpoints.</description>
+    <parts>
+        <part>
+            <text>SELECT TOP 100 * FROM [Warehouse_A].[dbo].[FactSales] s</text>
+            <desc>Selecciona datos del primer Warehouse usando la notación de tres partes [BaseDatos].[Esquema].[Tabla].</desc>
+        </part>
+        <part>
+            <text>JOIN [Warehouse_B].[dbo].[DimCustomer] c</text>
+            <desc>Une con una tabla situada en un segundo Warehouse diferente, accesible en el mismo workspace.</desc>
+        </part>
+        <part>
+            <text>ON s.CustomerKey = c.CustomerKey</text>
+            <desc>Condición de unión estándar entre las dos tablas.</desc>
+        </part>
+    </parts>
+    <full>SELECT TOP 100 * FROM [Warehouse_A].[dbo].[FactSales] s JOIN [Warehouse_B].[dbo].[DimCustomer] c ON s.CustomerKey = c.CustomerKey;</full>
+</command>

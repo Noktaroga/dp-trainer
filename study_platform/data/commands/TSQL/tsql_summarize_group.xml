@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>GROUP BY simple</title>
+    <description>Agrupa por vecindario y suma bicicletas. [Source Table: Bikestream]</description>
+    <parts>
+        <part>
+            <text>SUM(No_Bikes)</text>
+            <desc>Función de agregado.</desc>
+        </part>
+        <part>
+            <text>GROUP BY Neighbourhood</text>
+            <desc>Cláusula de agrupación.</desc>
+        </part>
+    </parts>
+    <full>SELECT Neighbourhood, Sum(No_Bikes) AS [Total Number of Bikes] FROM Bikestream GROUP BY Neighbourhood</full>
+</command>

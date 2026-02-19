@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>Lectura CSV Spark</title>
+    <description>Carga CSV con esquema definido en PySpark. [Variable Name: df; Path: Files/orders/*.csv]</description>
+    <parts>
+        <part>
+            <text>.schema(orderSchema)</text>
+            <desc>Aplica esquema predefinido.</desc>
+        </part>
+    </parts>
+    <full>df = spark.read.format("csv").schema(orderSchema).load("Files/orders/*.csv")</full>
+</command>

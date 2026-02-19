@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>Filtrado y Ordenamiento KQL</title>
+    <description>Filtra por vecindario y ordena los resultados alfabéticamente. [KQL Base Table: Bikestream]</description>
+    <parts>
+        <part>
+            <text>where Neighbourhood == "Chelsea"</text>
+            <desc>Filtra los registros para conservar solo aquellos donde el vecindario es exactamente "Chelsea".</desc>
+        </part>
+        <part>
+            <text>sort by Neighbourhood asc</text>
+            <desc>Ordena el conjunto de resultados resultante por el nombre del vecindario en orden ascendente (A-Z).</desc>
+        </part>
+    </parts>
+    <full>Bikestream | where Neighbourhood == "Chelsea" | sort by Neighbourhood asc</full>
+</command>

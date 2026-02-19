@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>Monitoreo de Sesiones</title>
+    <description>Lista los usuarios conectados y la hora de su última actividad. [Source Table: sys.dm_exec_sessions]</description>
+    <parts>
+        <part>
+            <text>SELECT session_id, login_name, status</text>
+            <desc>Selecciona identificadores clave: ID de sesión, usuario y estado actual.</desc>
+        </part>
+        <part>
+            <text>FROM sys.dm_exec_sessions</text>
+            <desc>Consulta la DMV (Dynamic Management View) que rastrea todas las conexiones activas al SQL Endpoint.</desc>
+        </part>
+    </parts>
+    <full>SELECT session_id, login_name, status FROM sys.dm_exec_sessions;</full>
+</command>

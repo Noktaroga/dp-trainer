@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>Guardado en Delta Lake (V2)</title>
+    <description>Guarda el DataFrame como una tabla en formato Delta. [Save Table: salesorders]</description>
+    <parts>
+        <part>
+            <text>.format("delta")</text>
+            <desc>Uso del formato transaccional Delta.</desc>
+        </part>
+    </parts>
+    <full>df.write.format("delta").saveAsTable("salesorders")</full>
+</command>

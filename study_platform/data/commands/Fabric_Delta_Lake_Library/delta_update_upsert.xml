@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>Operación Upsert (MERGE)</title>
+    <description>Actualiza registros existentes e inserta nuevos en una sola operación.</description>
+    <parts>
+        <part>
+            <text>MERGE INTO target_table</text>
+            <desc>Identifica la tabla destino que recibirá los cambios.</desc>
+        </part>
+        <part>
+            <text>USING source_updates</text>
+            <desc>Identifica la tabla o vista origen que contiene los datos nuevos/actualizados.</desc>
+        </part>
+        <part>
+            <text>ON target_table.id = source_updates.id</text>
+            <desc>Establece la condición de enlace (llave) para determinar si un registro ya existe.</desc>
+        </part>
+        <part>
+            <text>WHEN MATCHED THEN UPDATE SET *</text>
+            <desc>Si las llaves coinciden, actualiza todos los campos de la tabla destino.</desc>
+        </part>
+        <part>
+            <text>WHEN NOT MATCHED THEN INSERT *</text>
+            <desc>Si no hay coincidencia, inserta el registro nuevo completo.</desc>
+        </part>
+    </parts>
+    <full>spark.sql("MERGE INTO target_table USING source_updates ON target_table.id = source_updates.id WHEN MATCHED THEN UPDATE SET * WHEN NOT MATCHED THEN INSERT *")</full>
+</command>

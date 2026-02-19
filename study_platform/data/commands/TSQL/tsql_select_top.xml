@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>SELECT TOP 10</title>
+    <description>Consulta básica limitando resultados y usando alias. [Source Table: Bikestream]</description>
+    <parts>
+        <part>
+            <text>SELECT TOP 10</text>
+            <desc>Limita la salida a las primeras 10 filas encontradas.</desc>
+        </part>
+        <part>
+            <text>as [Number of Empty Docks]</text>
+            <desc>Renombra la columna en el resultado (Alias).</desc>
+        </part>
+    </parts>
+    <full>SELECT TOP 10 Street, No_Empty_Docks as [Number of Empty Docks] from Bikestream</full>
+</command>

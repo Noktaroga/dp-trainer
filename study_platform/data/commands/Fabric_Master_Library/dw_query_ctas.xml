@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>CREATE TABLE AS SELECT (CTAS)</title>
+    <description>Crea una tabla nueva basándose en el resultado de una consulta. [Target Object: dbo.AggregatedSales; Source Table: dbo.Sales]</description>
+    <parts>
+        <part>
+            <text>CREATE TABLE dbo.AggregatedSales AS</text>
+            <desc>Inicia la creación de una nueva tabla, definiendo su esquema automáticamente basado en el SELECT siguiente.</desc>
+        </part>
+        <part>
+            <text>SELECT Year, SUM(Amount) as Total</text>
+            <desc>Define las columnas y la lógica de transformación (agregación en este caso) para la nueva tabla.</desc>
+        </part>
+        <part>
+            <text>FROM dbo.Sales GROUP BY Year</text>
+            <desc>Especifica la fuente de datos y la agrupación necesaria para el cálculo.</desc>
+        </part>
+    </parts>
+    <full>CREATE TABLE dbo.AggregatedSales AS SELECT Year, SUM(Amount) as Total FROM dbo.Sales GROUP BY Year;</full>
+</command>

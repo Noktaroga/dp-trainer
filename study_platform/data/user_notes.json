@@ -1,0 +1,7 @@
+[
+    {
+        "timestamp": "2026-02-15T02:15:25.110455",
+        "display_time": "2026-02-15 02:15:25",
+        "content": "¿Qué es OLTP?↔Tipo de sistema transaccional orientado a operaciones cortas y frecuentes (insertar, actualizar, borrar y leer registros) en tiempo real, usado para aplicaciones operacionales como banca, e‑commerce o sistemas de pedidos."
+    }
+]

@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>Lectura CSV Spark</title>
+    <description>Carga CSV con esquema definido en PySpark. [Variable Name: df; Path: Files/orders/*.csv]</description>
+    <parts>
+        <part>
+            <text>df = spark.read</text>
+            <desc>Inicia el DataFrameReader.</desc>
+        </part>
+        <part>
+            <text>.format("csv")</text>
+            <desc>Especifica el formato de archivo origen.</desc>
+        </part>
+        <part>
+            <text>.schema(orderSchema)</text>
+            <desc>Aplica un esquema (StructType) definido previamente para forzar tipos de datos correctos.</desc>
+        </part>
+        <part>
+            <text>.load("Files/orders/*.csv")</text>
+            <desc>Lee los archivos que coincidan con el patrón wildcard.</desc>
+        </part>
+    </parts>
+    <full>df = spark.read.format("csv").schema(orderSchema).load("Files/orders/*.csv")</full>
+</command>

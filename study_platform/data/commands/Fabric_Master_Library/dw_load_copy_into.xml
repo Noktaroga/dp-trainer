@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>Carga masiva con COPY INTO</title>
+    <description>Carga archivos Parquet/CSV externos hacia el Warehouse. [Target Object: dbo.FactSales]</description>
+    <parts>
+        <part>
+            <text>COPY INTO dbo.FactSales</text>
+            <desc>Comando T-SQL optimizado para importar datos masivamente a una tabla del Warehouse.</desc>
+        </part>
+        <part>
+            <text>FROM 'https://storage.azure.com/data/'</text>
+            <desc>Especifica la URI base de origen en Azure Data Lake Storage.</desc>
+        </part>
+        <part>
+            <text>WITH (FILE_TYPE = 'PARQUET')</text>
+            <desc>Define opciones de carga, en este caso indicando que los archivos origen son Parquet.</desc>
+        </part>
+    </parts>
+    <full>COPY INTO dbo.FactSales FROM 'https://storage.azure.com/data/' WITH (FILE_TYPE = 'PARQUET');</full>
+</command>

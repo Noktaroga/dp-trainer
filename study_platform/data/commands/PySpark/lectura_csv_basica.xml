@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>Lectura CSV Básica</title>
+    <description>Carga un archivo CSV con inferencia de encabezados. [Variable Name: df; Path: Files/orders/2019.csv]</description>
+    <parts>
+        <part>
+            <text>spark.read.format("csv")</text>
+            <desc>Inicializa lector para formato CSV.</desc>
+        </part>
+        <part>
+            <text>.option("header", "true")</text>
+            <desc>Indica que la primera fila del archivo contiene los nombres de las columnas.</desc>
+        </part>
+    </parts>
+    <full>df = spark.read.format("csv").option("header", "true").load("Files/orders/2019.csv")</full>
+</command>

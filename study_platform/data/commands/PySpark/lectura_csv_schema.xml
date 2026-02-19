@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>Lectura CSV con Esquema</title>
+    <description>Carga archivos CSV aplicando un esquema estricto (StructType). [Variable Name: df; Path: Files/orders/*.csv]</description>
+    <parts>
+        <part>
+            <text>.schema(orderSchema)</text>
+            <desc>Aplica la definición de tipos de datos 'orderSchema' a los datos leídos.</desc>
+        </part>
+        <part>
+            <text>.load("Files/orders/*.csv")</text>
+            <desc>Carga múltiples archivos a la vez usando el comodín '*'.</desc>
+        </part>
+    </parts>
+    <full>df = spark.read.format("csv").schema(orderSchema).load("Files/orders/*.csv")</full>
+</command>

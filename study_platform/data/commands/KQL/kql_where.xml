@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<command>
+    <title>Filtrado de datos con KQL (WHERE)</title>
+    <description>Aplica filtros de nivel de fila antes de procesar agregaciones u ordenamientos. [KQL Base Table: Bikestream; Group By: Neighbourhood]</description>
+    <parts>
+        <part>
+            <text>where Neighbourhood == "Chelsea"</text>
+            <desc>Filtra el flujo de datos para incluir solo registros donde la columna Neighbourhood es igual a "Chelsea".</desc>
+        </part>
+        <part>
+            <text>summarize ...</text>
+            <desc>Agrega los datos filtrados.</desc>
+        </part>
+    </parts>
+    <full>Bikestream | where Neighbourhood == "Chelsea" | summarize ["Total Number of Bikes"] = sum(No_Bikes) by Neighbourhood</full>
+</command>
