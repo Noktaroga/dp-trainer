@@ -1,9 +1,0 @@
-<command>
-    <title>INSERT INTO en Data Warehouse</title>
-    <description>Inserta múltiples registros de forma manual en una tabla relacional.</description>
-    <parts>
-        <part><text>INSERT INTO dbo.DimProduct</text><desc>Especifica la tabla de destino.</desc></part>
-        <part><text>VALUES (1, 'RING1', ...)</text><desc>Lista de valores para cada fila a insertar.</desc></part>
-    </parts>
-    <full>INSERT INTO dbo.DimProduct VALUES (1, 'RING1', 'Bicycle bell', 'Accessories', 5.99), (2, 'BRITE1', 'Front light', 'Accessories', 15.49), (3, 'BRITE2', 'Rear light', 'Accessories', 15.49);</full>
-</command>

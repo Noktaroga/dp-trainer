@@ -1,9 +1,0 @@
-<command>
-    <title>CREATE VIEW en Data Warehouse</title>
-    <description>Encapsula una consulta compleja en una vista para facilitar su reutilización.</description>
-    <parts>
-        <part><text>CREATE VIEW vSalesByRegion</text><desc>Crea el objeto de vista en el esquema.</desc></part>
-        <part><text>SELECT ... FROM ... GROUP BY ...</text><desc>Consulta base (no puede incluir ORDER BY).</desc></part>
-    </parts>
-    <full>CREATE VIEW vSalesByRegion AS SELECT d.[Year] AS CalendarYear, c.CountryRegion AS SalesRegion, SUM(so.SalesTotal) AS SalesRevenue FROM FactSalesOrder AS so JOIN DimDate AS d ON so.SalesOrderDateKey = d.DateKey JOIN DimCustomer AS c ON so.CustomerKey = c.CustomerKey GROUP BY d.[Year], d.[Month], d.MonthName, c.CountryRegion;</full>
-</command>

@@ -1,9 +1,0 @@
-<command>
-    <title>Resumen y Lógica de Nulos en KQL</title>
-    <description>Agrupa datos y maneja valores vacíos mediante case e isempty.</description>
-    <parts>
-        <part><text>summarize sum(No_Bikes)</text><desc>Suma de bicicletas por grupo.</desc></part>
-        <part><text>case(isempty(X), "U", X)</text><desc>Etiqueta valores desconocidos.</desc></part>
-    </parts>
-    <full>Bikestream | summarize ["Total"] = sum(No_Bikes) by Neighbourhood | project Neighbourhood = case(isempty(Neighbourhood), "Unidentified", Neighbourhood)</full>
-</command>

@@ -1,9 +1,0 @@
-<command>
-    <title>Lectura de CSV con Esquema Definido</title>
-    <description>Carga archivos CSV especificando manualmente la estructura de las columnas.</description>
-    <parts>
-        <part><text>spark.read.format("csv")</text><desc>Lector configurado para CSV.</desc></part>
-        <part><text>.schema(orderSchema)</text><desc>Aplica estructura de tipos.</desc></part>
-    </parts>
-    <full>df = spark.read.format("csv").schema(orderSchema).load("Files/orders/*.csv")</full>
-</command>
