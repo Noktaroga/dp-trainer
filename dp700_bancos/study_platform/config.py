@@ -1,6 +1,3 @@
-"""
-Configuración global de la aplicación
-"""
 from pathlib import Path
 
 class Config:

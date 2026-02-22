@@ -4,11 +4,11 @@
   "current_streak_days": 0,
   "longest_streak_days": 0,
   "last_study_date": "",
-  "sql_commands_completed": 5,
-  "sql_total_attempts": 12,
+  "sql_commands_completed": 6,
+  "sql_total_attempts": 13,
   "sql_total_errors": 7,
-  "sql_current_streak": 2,
-  "sql_best_streak": 2,
+  "sql_current_streak": 3,
+  "sql_best_streak": 3,
   "sql_command_metrics": {
     "delta_read_version": {
       "attempts": 2,
@@ -21,8 +21,8 @@
       "errors": 3
     },
     "delta_create_table": {
-      "attempts": 1,
-      "correct": 1,
+      "attempts": 2,
+      "correct": 2,
       "errors": 0
     }
   },
